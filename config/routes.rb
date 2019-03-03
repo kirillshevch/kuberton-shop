@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   root 'products#index'
 
-  resources :products, only: %w[show index]
+  resources :products, only: %i[show index]
+  resource :cart, only: %i[show]
 end
