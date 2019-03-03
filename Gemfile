@@ -18,6 +18,8 @@ gem 'bootstrap4-kaminari-views'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'operators-service', '~> 0.2.1'
 
+gem 'redis'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'letter_opener_web'
