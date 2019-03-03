@@ -4,15 +4,32 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   layout :layout_by_resource
 
-  # before_action :configure_permitted_parameters, if: :devise_controller?
+  def self.check_user_order
+    before_action :check_user
+    before_action :current_order
+  end
 
-  # def configure_permitted_parameters
-  #   update_attrs = %i[password password_confirmation current_password]
-  #   devise_parameter_sanitizer.permit(:account_update, keys: update_attrs)
-  # end
+  private
+
+  def check_user
+    @current_user = current_user
+    redirect_to new_user_session_path if @current_user.blank?
+  end
+
+  def check_order
+    redirect_to :not_found if order_fetcher.failure?
+  end
+
+  def order_fetcher
+    @order_fetcher ||= OrderService::Current.call(current_user)
+  end
 
   def current_order
-    @current_order ||= OrderService::Current.call(user)
+    @current_order ||= order_fetcher.value if order_fetcher.success?
+  end
+
+  def redirect_with_error(path, error)
+    redirect_to path, flash: { error: [error].flatten.joins(', ') }
   end
 
   private

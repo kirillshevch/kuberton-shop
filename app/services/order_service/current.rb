@@ -9,6 +9,8 @@ module OrderService
     end
 
     def call
+      return failure(:blank_user) if user.blank?
+
       @current_order = fetch_order
       @current_order = create_order if fetch_order.failure?
 
