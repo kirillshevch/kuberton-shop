@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   resources :line_items, only: %i[create destroy]
   resource :checkout, only: %i[show]
 
-  get 'complete', to: 'checkout#complete'
+  get 'complete', to: 'checkouts#complete'
 end

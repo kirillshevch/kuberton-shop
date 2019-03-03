@@ -1,11 +1,13 @@
 class CheckoutsController < ApplicationController
   def complete
-    if session[:order][:complete]
+    if session[:order][:completed]
       order_id = session[:order][:id]
 
       OrderService::Current.call(current_user).value.update(status: :paid)
 
       redirect_to root_path, flash: { success: "Order: #{order_id} completed!" }
+    else
+      redirect_to root_path, flash: { error: "Order failed to be completed!" }
     end
   end
 

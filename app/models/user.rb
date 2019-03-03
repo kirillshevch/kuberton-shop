@@ -11,7 +11,7 @@ class User < ApplicationRecord
   }, _suffix: true
 
   def active_orders_count
-    orders.where(status: :in_progress).last.line_items.count
+    orders.where(status: :in_progress).last&.line_items&.count
   end
 
 end
