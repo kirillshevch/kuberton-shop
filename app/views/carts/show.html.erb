@@ -3,6 +3,17 @@
     <% if @line_items.blank? %>
       No items
     <% else %>
+      <div class='mb-sm-3'>
+        <div class='row'>
+          <div class='col-sm-4'>
+            <h3>Total: <%= number_to_currency(@summ) %></h3>
+          </div>
+          <div class='col-sm-8 text-right'>
+            <%= link_to 'Back to shopping', :root, class: 'btn btn-light' %>
+            <%= link_to 'Proceed to checkout', :checkout, class: 'btn btn-success' %>
+          </div>
+        </div>
+      </div>
       <% @line_items.each_slice(4) do |line_item_group| %>
         <div class='row'>
           <% line_item_group.each do |line_item| %>
