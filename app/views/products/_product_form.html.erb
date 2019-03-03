@@ -1,7 +1,9 @@
-<form class='form-inline pull-right' style='justify-content: <%= justify %>;'>
-  <label class="mr-sm-2" for="inlineFormCustomSelect">Qty:</label>
-  <input type='number' value='1' step='1' min='1' class='form-control mr-sm-2' style='width: 4em;'/>
-  <button class='btn btn-primary'>
-    Add to Cart
-  </button>
-</form>
+<%= form_for LineItem.new(product_id: product.id, quantity: 1) do |f| %>
+  <div class='form-inline' style="justify-content: <%= justify %>">
+    <label class="mr-sm-2">Qty:</label>
+    <%= f.number_field :quantity, step: '1', min: '1', class: 'form-control mr-sm-2', style: 'width: 4em;' %>
+    <button class='btn btn-primary' type='submit'>
+      Add to Cart
+    </button>
+  </div>
+<% end %>

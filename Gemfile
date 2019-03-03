@@ -18,7 +18,7 @@ gem 'bootstrap4-kaminari-views'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'operators-service', '~> 0.2.1'
 gem 'operators-serializer'
-
+gem 'jquery-rails'
 gem 'redis'
 
 group :development, :test do
