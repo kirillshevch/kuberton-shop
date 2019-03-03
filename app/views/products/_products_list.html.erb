@@ -14,7 +14,7 @@
             <% end %>
           </h4>
           <p>
-            <%= product.small_description.truncate(100) %>
+            <%= product.small_description&.truncate(100) %>
           </p>
           <div class='row'>
             <div class='col-md-6'>
