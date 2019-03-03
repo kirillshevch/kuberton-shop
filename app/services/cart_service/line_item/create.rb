@@ -4,10 +4,10 @@ module CartService::LineItem
   class Create < Operators::Service
     attr_reader :order, :product_id, :quantity, :product, :line_item
 
-    def initialize(order, product_id:, quantity:)
+    def initialize(order, params)
       @order = order
-      @product_id = product_id
-      @quantity = quantity
+      @product_id = params[:product_id]
+      @quantity = params[:quantity]
     end
 
     def call
