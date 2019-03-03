@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resource :cart, only: %i[show]
   resources :line_items, only: %i[create destroy]
   resource :checkout, only: %i[show]
+
+  get 'complete', to: 'checkout#complete'
 end
