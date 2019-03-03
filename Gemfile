@@ -6,11 +6,12 @@ ruby '2.4.2'
 gem 'rails', '~> 5.2.2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0.0.beta1'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
+
+gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
