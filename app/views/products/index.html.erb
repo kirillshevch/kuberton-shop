@@ -1,1 +1,15 @@
-<h1>Kubershop</h1>
+<div class='w-100 text-center promo-box'>
+  <b>35% off</b> if you managed to make an order :)
+</div>
+<div class='album'>
+  <div class='container'>
+    <div class='clearfix'>
+      <%= paginate @products, theme: 'twitter-bootstrap-4' %>
+    </div>
+    <%= render 'products_list', products: @products %>
+    <div class='clearfix'>
+      <%= paginate @products, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>
+

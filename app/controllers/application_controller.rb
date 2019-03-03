@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  layout :layout_by_resource
 
   def self.check_user_order
     before_action :check_user
@@ -29,5 +30,15 @@ class ApplicationController < ActionController::Base
 
   def redirect_with_error(path, error)
     redirect_to path, flash: { error: [error].flatten.joins(', ') }
+  end
+
+  private
+
+  def layout_by_resource
+    if devise_controller?
+      "devise"
+    else
+      "application"
+    end
   end
 end

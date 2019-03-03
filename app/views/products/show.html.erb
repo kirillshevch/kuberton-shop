@@ -1,3 +1,31 @@
-Product name: <%= @product.name %>
-<br />
-Price: <%= @product.price %>
+<div class='album'>
+  <div class='container'>
+    <div class='row row'>
+      <div class='col-md-6 text-center mb-sm-5'>
+        <img style='max-width: 100%;' src='<%= @product.image %>' alt=''/>
+      </div>
+      <div class='col-md-6 mb-sm-5'>
+        <div class='card'>
+          <div class='card-body'>
+            <h1>
+              <%= @product.name %>
+            </h1>
+            <p>
+              <%= @product.small_description %>
+            </p>
+            <p>
+              <%= render 'product_form', product: @product, justify: 'flex-start' %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='mb-sm-5'>
+      <%= @product.description %>
+    </div>
+    <div class='mb-sm-3'>
+      <h4>Similar Products</h4>
+    </div>
+    <%= render 'products_list', products: @recommended_products %>
+  </div>
+</div>
