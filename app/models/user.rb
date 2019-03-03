@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :orders
 
-  enum state: {
+  enum currency_type: {
     usd: 0
-  }
+  }, _suffix: true
 end
