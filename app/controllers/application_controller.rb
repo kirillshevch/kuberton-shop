@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_with_error(path, error)
-    redirect_to path, flash: { error: [error].flatten.joins(', ') }
+    redirect_to path, flash: { error: [error].flatten.join(', ') }
   end
 
   private
