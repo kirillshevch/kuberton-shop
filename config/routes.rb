@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root 'products#index'
 
   resources :products, only: %w[show index]
+  resource :checkout, only: %w[show]
 end
