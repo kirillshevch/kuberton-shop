@@ -12,7 +12,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise', '~> 4.6', '>= 4.6.1'
 
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
+gem 'bootstrap4-kaminari-views'
 
 gem 'operators-service', '~> 0.2.1'
 
@@ -26,6 +28,7 @@ end
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'faker'
 end
 
 
