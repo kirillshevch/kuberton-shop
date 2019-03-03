@@ -1,6 +1,5 @@
 class CartsController < ApplicationController
-  check_user
-  check_order
+  check_user_order
 
   def show
     @line_items = current_order.line_items

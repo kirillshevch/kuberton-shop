@@ -3,11 +3,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  def self.check_user
+  def self.check_user_order
     before_action :check_user
-  end
-
-  def self.check_order
     before_action :current_order
   end
 
@@ -28,5 +25,9 @@ class ApplicationController < ActionController::Base
 
   def current_order
     @current_order ||= order_fetcher.value if order_fetcher.success?
+  end
+
+  def redirect_with_error(path, error)
+    redirect_to path, flash: { error: [error].flatten.joins(', ') }
   end
 end
