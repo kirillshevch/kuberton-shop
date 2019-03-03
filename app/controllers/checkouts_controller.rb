@@ -6,6 +6,7 @@ class CheckoutsController < ApplicationController
       OrderService::Current.call(current_user).value.update(status: :paid)
 
       redirect_to root_path, flash: { success: "Order: #{order_id} completed!" }
+      ApplicationMailer.new_order(current_user.email).deliver_now
     else
       redirect_to root_path, flash: { error: "Order failed to be completed!" }
     end
