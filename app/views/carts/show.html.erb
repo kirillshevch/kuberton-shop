@@ -1,0 +1,7 @@
+<% if @line_items.blank? %>
+  No items
+<% else %>
+  <% @line_items.each do |line_item| %>
+    <%= line_item.id %>
+  <% end %>
+<% end %>

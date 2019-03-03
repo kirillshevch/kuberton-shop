@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root 'products#index'
 
-  resources :products, only: %w[show index]
-  resource :checkout, only: %w[show]
+  resources :products, only: %i[show index]
+  resource :cart, only: %i[show]
+  resources :line_items, only: %i[create destroy]
+  resource :checkout, only: %i[show]
 end
