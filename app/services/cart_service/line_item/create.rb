@@ -14,7 +14,7 @@ module CartService::LineItem
       fetch_product
 
       return failure(:not_found_product) if product.blank?
-      return failure(:item_exist) if fetch_line_item.success?
+      return adding_line_item if fetch_line_item.success?
 
       create_line_item
 
@@ -33,6 +33,10 @@ module CartService::LineItem
 
     def create_line_item
       @line_item = ::LineItem.create(create_params)
+    end
+
+    def adding_line_item
+      CartService::LineItem::Adding.call(fetch_line_item.value, quantity)
     end
 
     def create_params
