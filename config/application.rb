@@ -17,8 +17,12 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require_relative 'secrets_env_loader'
+
 module KubertonShop
   class Application < Rails::Application
+    SecretsEnvLoader.new.call
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
