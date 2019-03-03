@@ -1,0 +1,31 @@
+<div class='product-card'>
+  <p class='text-center'>
+    <%= link_to product do %>
+      <img style='max-width: 100%;' src='<%= product.image %>' alt=''/>
+    <% end %>
+  </p>
+  <h4>
+    <%= link_to product do %>
+      <%= product.name %>
+    <% end %>
+  </h4>
+  <h5>
+    <%= number_to_currency(product.price) %>
+  </h5>
+  <p>
+    <%= product.small_description&.truncate(100) %>
+  </p>
+  <% if !local_assigns.has_key?(:hide_form) || !hide_form %>
+    <div class='row'>
+      <div class='col-md-6'>
+        <%= link_to product, class: 'btn btn-light' do %>
+          Read More
+        <% end %>
+      </div>
+      <div class='col-md-6'>
+        <%= render partial: 'products/product_form', locals: {product: product, justify: 'flex-end'} %>
+      </div>
+    </div>
+  <% end %>
+  <%= yield %>
+</div>

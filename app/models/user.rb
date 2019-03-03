@@ -9,4 +9,9 @@ class User < ApplicationRecord
   enum currency_type: {
     usd: 0
   }, _suffix: true
+
+  def active_orders_count
+    orders.where(status: :in_progress).last.line_items.count
+  end
+
 end
