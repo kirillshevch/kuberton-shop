@@ -10,7 +10,8 @@ class LineItemsController < ApplicationController
   end
 
   def destroy
-    @result = CartService::LineItem::Delete.call(current_order, params[:product_id])
+    product = LineItem.find(params[:id])&.product
+    @result = CartService::LineItem::Delete.call(current_order, product&.id)
 
     redirect_back_result(@result)
   end
