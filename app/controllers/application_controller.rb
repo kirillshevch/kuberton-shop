@@ -28,8 +28,12 @@ class ApplicationController < ActionController::Base
     @current_order ||= order_fetcher.value if order_fetcher.success?
   end
 
-  def redirect_with_error(path, error)
-    redirect_to path, flash: { error: [error].flatten.join(', ') }
+  def redirect_back_result(result)
+    if result.success?
+      redirect_back fallback_location: root_path
+    else
+      redirect_back fallback_location: root_path, flash: { error: [result.value].flatten.join(', ') }
+    end
   end
 
   private
