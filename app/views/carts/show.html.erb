@@ -1,7 +1,31 @@
-<% if @line_items.blank? %>
-  No items
-<% else %>
-  <% @line_items.each do |line_item| %>
-    <%= line_item.id %>
-  <% end %>
-<% end %>
+<div class='album'>
+  <div class='container'>
+    <% if @line_items.blank? %>
+      No items
+    <% else %>
+      <% @line_items.each_slice(4) do |line_item_group| %>
+        <div class='row'>
+          <% line_item_group.each do |line_item| %>
+            <div class='col-sm-6'>
+              <%= render layout: 'products/product_card', locals: {product: line_item.product, hide_form: true} do %>
+                <p>
+                  <b>
+                    <%= number_to_currency(line_item.product.price) %>
+                    x <%= line_item.quantity %>
+                    <b>
+                      = <%= number_to_currency(line_item.product.price * line_item.quantity) %>
+                    </b>
+                  </b>
+                </p>
+                <div class='clearfix'>
+                  <%= link_to 'Remove from Cart', line_item, method: :delete, class: 'btn btn-danger' %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+

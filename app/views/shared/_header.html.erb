@@ -7,14 +7,16 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class='nav-item active'>
-          <a class="nav-link">Products</a>
-        </li>
-        <li class='nav-item'>
-          <a class="nav-link">Cart (empty)</a>
-        </li>
-      </ul>
+      <div class="navbar-nav mr-auto">
+        <%= active_link_to :root, class: 'nav-item' do %>
+          <span class="nav-link">Products</span>
+        <% end %>
+        <%= active_link_to :cart, class: 'nav-item' do %>
+          <span class='nav-link'>
+            Cart (<%= (current_user && current_user.active_orders_count) || 0 %>)
+          </span>
+        <% end %>
+      </div>
       <span class="navbar-text">
         <% if current_user %>
           Hi, <%= current_user.email %>
